@@ -1,0 +1,179 @@
+/* ===== Navbar Container ===== */
+.navbar {
+  background: rgba(10, 14, 26, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(10, 14, 26, 0.98);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Navbar Brand/Logo ===== */
+.navbar-brand {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-brand:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+}
+
+/* Add icon before brand name */
+.navbar-brand::before {
+  content: '🎬';
+  font-size: 1.5rem;
+  -webkit-text-fill-color: initial;
+  background: none;
+}
+
+/* ===== Navigation Links Container ===== */
+.navbar-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* ===== Individual Nav Links ===== */
+.nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.625rem 1.25rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  color: #cbd5e1;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-link:hover::before {
+  left: 100%;
+}
+
+.nav-link:hover {
+  background-color: rgba(102, 126, 234, 0.15);
+  color: #f1f5f9;
+  transform: translateY(-2px);
+}
+
+.nav-link:active {
+  transform: translateY(0);
+}
+
+/* ===== Active Link State ===== */
+.nav-link.active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+  color: #f1f5f9;
+  border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.nav-link.active:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+  border-color: rgba(102, 126, 234, 0.5);
+}
+
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.4rem;
+  }
+
+  .navbar-brand::before {
+    font-size: 1.25rem;
+  }
+
+  .navbar-links {
+    gap: 0.25rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 0.875rem 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+
+  .navbar-links {
+    gap: 0.25rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+}
+
+
+/* ===== Hover Effects for Desktop ===== */
+@media (min-width: 769px) {
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 80%;
+  }
+
+  .nav-link.active::after {
+    width: 80%;
+  }
+}
